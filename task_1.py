@@ -6,20 +6,18 @@ from datetime import datetime
 input_date = input('Введіть дату у форматі РРРР-ММ-ДД: ')
 
 def get_days_from_today(date: str):
-    while True:
-        try:
-            ### Перетворіть рядок дати у форматі 'РРРР-ММ-ДД' у об'єкт datetime.
-            date = datetime.strptime(date, '%Y-%m-%d')
-        
-            # Отримайте поточну дату, використовуючи datetime.today().
-            current_date = datetime.today()
-        
-            # Розрахуйте різницю між поточною датою та заданою датою. Поверніть різницю у днях як ціле число.
-            difference = (current_date - date).days
-            return difference 
-        except ValueError:
-            print("Введений формат дати невірний.")
-            date = input('Будь ласка, введіть дату у форматі РРРР-ММ-ДД: ')
+    try:
+        ### Перетворіть рядок дати у форматі 'РРРР-ММ-ДД' у об'єкт datetime.
+        date = datetime.strptime(date, '%Y-%m-%d')
+    
+        # Отримайте поточну дату, використовуючи datetime.today().
+        current_date = datetime.today()
+    
+        # Розрахуйте різницю між поточною датою та заданою датою. Повернітьрізницю у днях як ціле число.
+        difference = (current_date - date).days
+        return difference 
+    except ValueError:
+        print("Введений формат дати невірний.")
     
 result = get_days_from_today(input_date)
 print(result)
